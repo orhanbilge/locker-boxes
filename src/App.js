@@ -1,9 +1,15 @@
+import { useSelector } from 'react-redux'
+import Login from './pages/Login'
+import RoomsOverviews from './pages/RoomsOverviews'
+
 function App() {
-  return (
-    <h1 className="text-3xl font-bold underline">
-      Locker Boxes Challenge!
-    </h1>
-  );
+
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
+  
+  if(!isLoggedIn)
+    return <Login />;
+
+  return <RoomsOverviews />;
 }
 
 export default App;

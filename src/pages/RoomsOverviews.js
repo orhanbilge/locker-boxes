@@ -2,13 +2,19 @@ import roomsData from '../data/roomsData.json'
 import Navbar from '../components/Navbar'
 import Room from '../components/Room'
 import { useSelector } from 'react-redux'
-import { logout } from '../redux/slices/authSlice'
 
 export default function RoomsOverviews()
 {
     const { email } = useSelector((state) => state.auth.user)
     const userRoomsData = roomsData.filter(data => data.email === email);
     const rooms = [...new Set(userRoomsData.map(item => item.room))];
+    let roomTotals = userRoomsData.reduce((res, item) => {
+        if(!res[item.room])
+            res[item.room] = 0;
+        
+        res[item.room] += item.price * item.qty;
+        return res;
+    }, {});
 
     return (
         <div className="bg-gray-200 h-screen">
@@ -20,7 +26,7 @@ export default function RoomsOverviews()
                 <section>
                     <div className="flex flex-row justify-around">
                         {rooms.map((room) => (
-                            <Room roomName={room} />
+                            <Room roomName={room} total={roomTotals[room]} />
                         ))}
                     </div>
                 </section>

@@ -12,7 +12,7 @@ export default function RoomsOverviews()
         if(!res[item.room])
             res[item.room] = 0;
         
-        res[item.room] += item.price * item.qty;
+        res[item.room] += item.price.toFixed(2) * item.qty;
         return res;
     }, {});
 
@@ -26,7 +26,7 @@ export default function RoomsOverviews()
                 <section>
                     <div className="flex flex-row justify-around">
                         {rooms.map((room) => (
-                            <Room roomName={room} total={roomTotals[room]} />
+                            <Room key={room} roomName={room} total={roomTotals[room]} />
                         ))}
                     </div>
                 </section>

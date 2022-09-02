@@ -6,6 +6,13 @@ I developed this project with React.
 
 You can preview the project on this link: https://locker-boxes.vercel.app/
 
+## Users
+You can connect to the platform with these users:
+
+* bl@wamoco.de
+* df@wamoco.de
+* nr@wamoco.de
+
 ## Requirements
 You must have Node.JS and NPM installed on your computer.
 
